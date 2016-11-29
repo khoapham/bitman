@@ -40,18 +40,6 @@ int NColBFG=0;
 int NColM=0;
 int NColD=0;
 
-//	struct DeviceParameters *GlobalParameters;
-
-int getGlobalDeviceInformation(int DeviceID);
-int SetGlobalDeviceParameters(char *Device);
-int SetDeviceParameters(char *Device, struct DeviceParameters *Parameter);
-int getFrameIndexGlobal(void);
-int getFrameIndex(int BA, int MJA, int MNA, int TB_RA);	// TB_RA = TB + RA
-int incFrameAddress(void);
-int getROWByteIndex(int CLB_ROWindex);
-//int echoSupportedDevices(void);
-int FrameADR2BlockADR(int FrameADR, int *BA, int *MJA, int *MNA);
-
 struct DeviceParameters {
 	int NFrames;
 	int FLength;
@@ -81,6 +69,18 @@ struct DeviceParameters {
 	int NULLArea3;
 	int RowFrames;
 };
+
+//	struct DeviceParameters *GlobalParameters;
+
+int getGlobalDeviceInformation(int DeviceID);
+int SetGlobalDeviceParameters(char *Device);
+int SetDeviceParameters(char *Device, struct DeviceParameters *Parameter);
+int getFrameIndexGlobal(void);
+int getFrameIndex(int BA, int MJA, int MNA, int TB_RA);	// TB_RA = TB + RA
+int incFrameAddress(void);
+int getROWByteIndex(int CLB_ROWindex);
+//int echoSupportedDevices(void);
+int FrameADR2BlockADR(int FrameADR, int *BA, int *MJA, int *MNA);
 
 int getDeviceInformation(int DeviceID)
 
