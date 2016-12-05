@@ -4,22 +4,22 @@ int	IOIFrames=0;
 int	CLBFrames=0;
 int	RAMFrames=0;
 int	RI_Frames=0;				// number of BRAM interconnect frames
-int MFrames=0;
-int DFrames=0;
-int GFrames=0;
-int HBytes = 0;
+int	MFrames=0;
+int	DFrames=0;
+int	GFrames=0;
+int	HBytes = 0;
 int	CLBBytesIO;				// amount of Bytes for the CLB-IO-blocks within each frame
 int	CLBBytes=0;
 int	NFrames = -1;
-int FLength = -1;			// frame length can be set by writing a device ID
-int NColCLB = -1;
-int NColRAM = -1;
-int NULLArea = 0;
-int NULLArea1 = 0;
-int NULLArea2 = 0;
-int NULLArea3 = 0;
-int RowFrames = 0;
-int NRowRsc = 1;
+int	FLength = -1;			// frame length can be set by writing a device ID
+int	NColCLB = -1;
+int	NColRAM = -1;
+int	NULLArea = 0;
+int	NULLArea1 = 0;
+int	NULLArea2 = 0;
+int	NULLArea3 = 0;
+int	RowFrames = 0;
+int	NRowRsc = 1;
 
 int LutBitOffset[8][16];		// frame offset values for all LUTs Slice3,G downto Slice0,F and Bit F downto 0
 int LutShiftUsageOffset[8][4];		// for detecting reconfigurable select generator usage; we check up to 4 bit; set to -1 if unused
@@ -50,17 +50,17 @@ struct DeviceParameters {
 	char *ResourceString2;
 	char *Family;
 	int CLKFrames;
-	int	IOBFrames;
-	int	IOIFrames;
-	int	CLBFrames;	// CLBL frames
-	int	RAMFrames;	// Block RAM frames
-	int	RI_Frames;	// Block RAM interconnect frames
+	int IOBFrames;
+	int IOIFrames;
+	int CLBFrames;	// CLBL frames
+	int RAMFrames;	// Block RAM frames
+	int RI_Frames;	// Block RAM interconnect frames
 	int MFrames;	// CLBM frames
 	int DFrames;	// DSP frames
 	int GFrames;	// BUFG frames
 	int HBytes;	// RCLK frames
-	int	CLBBytesIO;
-	int	CLBBytes;
+	int CLBBytesIO;
+	int CLBBytes;
 	int LutBitOffset[8][16];
 	int LutShiftUsageOffset[8][4];
 	int NULLArea;
