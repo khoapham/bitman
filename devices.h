@@ -1,6 +1,5 @@
 int getGlobalDeviceInformation(int DeviceID);
 int SetGlobalDeviceParameters(char *Device);
-int SetDeviceParameters(char *Device, struct DeviceParameters *Parameter);
 int getFrameIndexGlobal(void);
 int getFrameIndex(int BA, int MJA, int MNA, int TB_RA);	// TB_RA = TB + RA
 int incFrameAddress(void);
