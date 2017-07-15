@@ -24,14 +24,15 @@ int getColIndex(void);
 
 void dumpPartial(void);
 int getBufferByte(int BufferIndex, int Frame, int ByteIndex);
+void setBufferByte(int BufferIndex, int Frame, int ByteIndex, int Value);
 int getBufferBytePartial(int Frame, int ByteIndex);
 
 //unsigned int *inData, *outData;
 //int ByteSwap(unsigned int *inData, unsigned int *outData, int inSize);
-
+void ResetNCol();
 int FillBuffer(FILE *ptr, int WordCount, int BufferIndex, bool isPartial);
-void bufferHeaderAndFooter(void);
-int WriteFullBitstream(char *FullBitstreamFileName);
+void bufferHeaderAndFooter(FILE *in_ptr);
+int WriteFullBitstream(char *FullBitstreamFileName, int BufferIndex);
 int WriteFullBitstreamPartial(char *ModuleBitstreamFileName);
 int WriteModuleBitstream(char *ModuleBitstreamFileName);
 int WriteModuleBitstreamHeader(FILE *OutBitfilePtr);
@@ -40,15 +41,17 @@ int WriteModuleBitstreamFooter(FILE *OutBitfilePtr);
 int WriteModuleBitstreamData(FILE *OutBitfilePtr, int BA, int Offset, int Blocks, int FramesPerBlock);
 
 int WritePartialBitstream(char *PartialBitstreamFileName);
+int WritePartialBitstream_Z7(char *PartialBitstreamFileName);
+int WritePartialBitstream_ZU(char *PartialBitstreamFileName);
 int WriteDebugPartialBitstream(char *PartialBitstreamFileName);
 
 void scan(FILE *in_ptr, int BufferIndex);
 
-void echoCLBs(void);
-int echoRAMs(char mode);
-void echoCLKs(void);
+void echoCLBs(int BufferIndex);
+int echoRAMs(char mode, int BufferIndex);
+void echoCLKs(int BufferIndex);
 
-void InitPartialMask(void);
+//void InitPartialMask(void);
 void echoTXT(int level,char *msg);
 
 void ParseRsgOptions(char **argv, int i, char type);
@@ -111,23 +114,28 @@ char *PartialBitstreamFileName;
 int LinkPitFileMode;
 // global variables and functions' declarations for the Resource Replication
 int RepRsc;
-char *TypeOfResource;
-void ParseRepRsc(char **argv, int i);
-int RscCl1;
-int RscRw1;
-int RscCl2;
-int RscRw2;
+int MergeRsc;
+int ReloRsc;
+int DupliRsc;
+void ParseRepMergeRsc(char **argv, int i);
+void ParseReloRsc(char **argv, int i);
+int RscCl1, RscRw1;
+int RscCl2, RscRw2;
+int RscCl3, RscRw3;
+int RepClb(int BufferIndex, int Cl1, int Rw1, int Cl2, int Rw2, bool IsReplaced);
+int RepBRAM(int BufferIndex, int Cl1, int Rw1, int Cl2, int Rw2, bool IsReplaced);
+int duplicate_FPGA_region(int BufferIndex, int MJA1, int MJA2, int MJA3, bool IsReplaced);
+int cut_FPGA_region(int MJA1, int Rw1, int MJA2, int Rw2, int MJA3, int Rw3);
+int cut_FPGA_region_CLB(int MJA1, int Rw1, int MJA2, int Rw2, int MJA3, int Rw3);
+int cut_FPGA_region_BRAM(int MJA1, int Rw1, int MJA2, int Rw2, int MJA3, int Rw3);
+int NoOfFrames(int CLB_Index);
 
-int RepClb(int Cl1, int Rw1, int Cl2, int Rw2, bool IsReplaced);
-int RepBRAM(int Cl1, int Rw1, int Cl2, int Rw2, bool IsReplaced);
-int duplicate_FPGA_region(int MJA1, int MJA2, int MJA3, bool IsReplaced);
-int cut_FPGA_region(int MJA1, int MJA2);
-
-int cutout_region[50000];
+//int cutout_region[50000];
+int *cutout_region;
 int end_cutout;
 
-void ParseMetaHeader(char **argv, int i);
-char *metadata;
+//void ParseMetaHeader(char **argv, int i);
+//char *metadata;
 
 struct LinkInformation {
 	int PitCol;
@@ -152,15 +160,15 @@ unsigned char InitialHeader[50000];
 int InitialHeaderSize;
 unsigned char InitialFooter[1000000];
 int InitialFooterSize;
-short PartialMaskCLB[250][250];
-short PartialMaskRAM[250][250];
-unsigned FrameBufferPartial[30000][150];	// this is the complete bitstream of a partial region
-unsigned FrameBuffer[2][30000][150];	// this is the complete bitstream of a XC7Z010
+//short PartialMaskCLB[250][250];
+//short PartialMaskRAM[250][250];
+unsigned FrameBufferPartial[100000][150];	// this is the complete bitstream of a partial region
+unsigned FrameBuffer[2][100000][150];	// this is the complete bitstream of a XC7Z010
 int FrameBufferState[5000];         // -1 stream is empty  
 
 unsigned ShadowCol[500];			// A configuration column is firstly written into a shadow reg...
 int ShadowState;
-int CLBState[6][100][60][50];	// denotes for each CLB if the entire frame contains some information
+int CLBState[2][10][250][60][80];	// denotes for each CLB if the entire frame contains some information
 int DeviceID;
 
 int ClbMaskActive;
@@ -204,7 +212,8 @@ int WriteRemaniningHeader(FILE *OutBitfilePtr);
 int WriteIDCODE(FILE *OutBitfilePtr);
 int WriteCMDReg(int CMDValue, FILE *OutBitfilePtr);
 int WriteCTL0Reg(int CTL0Value, FILE *OutBitfilePtr);
+int WriteCOR0Reg(int COR0Value, FILE *OutBitfilePtr);
+int WriteCTL1Reg(int CTL1Value, FILE *OutBitfilePtr);
 int WriteMASKReg(int MASKValue, FILE *OutBitfilePtr);
 int WriteSYNC(FILE *OutBitfilePtr);
-//int calNewFAR(int island);
-//int checkResourceMatching(char * ModuleResource, int island);
+int WriteZUBitfileHeader(FILE *OutBitfilePtr);
