@@ -225,11 +225,8 @@ int WriteMASKReg(int MASKValue, FILE *OutBitfilePtr);
 int WriteSYNC(FILE *OutBitfilePtr);
 int WriteZUBitfileHeader(FILE *OutBitfilePtr);
 int Write7SeriesPartialBitfileHeader(FILE *OutBitfilePtr);
-<<<<<<< HEAD
 int WriteZyboPartialBitfileHeader(FILE *OutBitfilePtr);
 int WriteZedBoardPartialBitfileHeader(FILE *OutBitfilePtr);
 int WriteZedBoardPartialBitfileHeaderBRAM(FILE *OutBitfilePtr);
 int Write7SeriesCFGCLB(FILE *OutBitfilePtr);
-=======
->>>>>>> 1b5415799dae56fbf70c09db77aeb9b7f146645e
 void print_Lut_Bit_Offset();
