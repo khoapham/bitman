@@ -40,15 +40,15 @@ Options:
 		+ The COL value of the R column is the value of (X*3+3)
 * Notes for "Set value for LUT" function
 	* How to know the LUT position in a CLB
-		* They are enumerated from bottom to top
-			A6LUT (bottom) - postion 0
-			B6LUT          - postion 1
-			C6LUT          - postion 2
-			D6LUT          - postion 3
-			A6LUT (middle) - postion 4
-			B6LUT          - postion 5
-			C6LUT          - postion 6
-			D6LUT          - postion 7
+		* They are enumerated from bottom to top:
+			* A6LUT (bottom) - postion 0
+			* B6LUT          - postion 1
+			* C6LUT          - postion 2
+			* D6LUT          - postion 3
+			* A6LUT (middle) - postion 4
+			* B6LUT          - postion 5
+			* C6LUT          - postion 6
+			* D6LUT          - postion 7
 	* (value_h, value_l) are in hexadecimal format to fulfill 64 bits of LUT init value
 	* Example: set LUT 0 at position (13, 250) to the value 0x8000000000000001
 	bitman.exe -S 13 250 0 80000000 00000001 none.bin -F clbm_13_250-3.bin
