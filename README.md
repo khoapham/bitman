@@ -7,25 +7,26 @@ Any question on how to use the tool, please send an email to the author at khoa.
 How to use the bitscan/bitman:
 
 * Use the help feature to explore console functionality
-	bitman.exe -h
-	BitMan - a configuration bitstream analizing tool for Xilinx FPGAs
-	Usage: bitman options [input_bitfile_1] [input_bitfile_2] option [output_file]
-	Options:
-		-v verbose
-		-c : print CLB info including bitstream encoding
-		-x COL1 ROW1 COL2 ROW2 : Cut out an FPGA region	from COL1 ROW1 (bottom left) COL2 ROW2 (top right)
-		-m COL1 ROW1 COL2 ROW2 [input_bitfile_1] [input_bitfile_2]: Cut out an FPGA region from COL1 ROW1 (bottom left)
+
+	* bitman.exe -h
+	* BitMan - a configuration bitstream analizing tool for Xilinx FPGAs
+	* Usage: bitman options [input_bitfile_1] [input_bitfile_2] option [output_file]
+	* Options:
+		+ -v verbose
+		+ -c : print CLB info including bitstream encoding
+		+ -x COL1 ROW1 COL2 ROW2 : Cut out an FPGA region	from COL1 ROW1 (bottom left) COL2 ROW2 (top right)
+		+ -m COL1 ROW1 COL2 ROW2 [input_bitfile_1] [input_bitfile_2]: Cut out an FPGA region from COL1 ROW1 (bottom left)
 									COL2 ROW2 (top right) in full bitstream bitfile_1 and merge
 									it into the full bitstream bitfile_2
-		-r COL1 ROW1 COL2 ROW2 COL3 ROW3 [input_bitfile_1]: relocate an FPGA region from COL1 ROW1 (bottom left)
+		+ -r COL1 ROW1 COL2 ROW2 COL3 ROW3 [input_bitfile_1]: relocate an FPGA region from COL1 ROW1 (bottom left)
 									COL2 ROW2 (top right) to COL3 ROW3 (bottom left)
-		-d COL1 ROW1 COL2 ROW2 COL3 ROW3 [input_bitfile_1]: duplicate an FPGA region from COL1 ROW1 (bottom left)
+		+ -d COL1 ROW1 COL2 ROW2 COL3 ROW3 [input_bitfile_1]: duplicate an FPGA region from COL1 ROW1 (bottom left)
 									COL2 ROW2 (top right) to COL3 ROW3 (bottom left)
 
-		-S COL ROW LUT value_h value_l: Set value (value_h, valuel) in the 1 of 8 LUTs at the COL ROW
+		+ -S COL ROW LUT value_h value_l: Set value (value_h, valuel) in the 1 of 8 LUTs at the COL ROW
 
-		-F [output_file]: Write (linked) full bitstream into file.
-		-M COL3 ROW3 [output_file]: Write module bitstream into partial file in the location start at COL3 ROW3.
+		+ -F [output_file]: Write (linked) full bitstream into file.
+		+ -M COL3 ROW3 [output_file]: Write module bitstream into partial file in the location start at COL3 ROW3.
 
 * How to calcute COL and ROW values in different FPGA families
 	* In 7-Series, ROW1 and ROW2 are strictly limited within a clock height. Cross-clock height operations are not supported.
