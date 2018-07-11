@@ -45,6 +45,7 @@ int WriteModuleBitstreamData(FILE *OutBitfilePtr, int BA, int Offset, int Blocks
 int WritePartialBitstream(char *PartialBitstreamFileName);
 int WritePartialBitstream_Z7(char *PartialBitstreamFileName);
 int WritePartialBitstream_ZU(char *PartialBitstreamFileName);
+int WritePartialBitstream_V6(char *PartialBitstreamFileName);
 int WriteDebugPartialBitstream(char *PartialBitstreamFileName);
 
 void scan(FILE *in_ptr, int BufferIndex);
@@ -140,6 +141,8 @@ int NoOfFrames(int CLB_Index);
 //int cutout_region[50000];
 int *cutout_region;
 int end_cutout;
+int *cutout_region_BRAM;
+int end_cutout_BRAM;
 
 //void ParseMetaHeader(char **argv, int i);
 //char *metadata;
@@ -214,7 +217,7 @@ int RSGUsage[250][250];	// denotes for each CLB if the entire frame contains som
 int WriteNOOP(int times, FILE *OutBitfilePtr);
 int WriteNoOfWords(int Words, bool AddFrame, FILE *OutBitfilePtr);
 int WriteFAR(int FARValue, FILE *OutBitfilePtr);
-int getFAR(int RscCl1, int RscRw1);
+int getFAR(int BA, int RscCl1, int RscRw1);
 int WriteRemaniningHeader(FILE *OutBitfilePtr);
 int WriteIDCODE(FILE *OutBitfilePtr);
 int WriteCMDReg(int CMDValue, FILE *OutBitfilePtr);
@@ -223,6 +226,7 @@ int WriteCOR0Reg(int COR0Value, FILE *OutBitfilePtr);
 int WriteCTL1Reg(int CTL1Value, FILE *OutBitfilePtr);
 int WriteMASKReg(int MASKValue, FILE *OutBitfilePtr);
 int WriteSYNC(FILE *OutBitfilePtr);
+int WriteV6BitfileHeader(FILE *OutBitfilePtr);
 int WriteZUBitfileHeader(FILE *OutBitfilePtr);
 int Write7SeriesPartialBitfileHeader(FILE *OutBitfilePtr);
 int WriteZyboPartialBitfileHeader(FILE *OutBitfilePtr);
