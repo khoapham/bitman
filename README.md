@@ -29,8 +29,8 @@ How to use the bitscan/bitman:
 		+ -M COL3 ROW3 [output_file]: Write module bitstream into partial file in the location start at COL3 ROW3.
 
 * How to calcute COL and ROW values in different FPGA families
-	* In 7-Series, ROW1 and ROW2 are strictly limited within a clock height. Cross-clock height operations are not supported.
-	* In the Virtex-7 family and XC7Z020 (ZedBoard): the COL and ROW values of a resource column are the X-Y
+	* In 6-Series, 7-Series, ROW1 and ROW2 are strictly limited within a clock height. Cross-clock height operations are not supported.
+	* In the Virtex-6, Virtex-7 families and XC7Z020 (ZedBoard): the COL and ROW values of a resource column are the X-Y
 	coordinator of its Switchbox.
 	* In the XC7Z010 (Zybo): the COL value is equal the X coordinator of its Switchbox minus 2 (X-2). The ROW value is the same as the Y coordinator.
 	* In the Zynq UltraScale+ family: resource columns are organized as the pattern L-s-R
@@ -51,5 +51,5 @@ How to use the bitscan/bitman:
 			* C6LUT          - postion 6
 			* D6LUT          - postion 7
 	* (value_h, value_l) are in hexadecimal format to fulfill 64 bits of LUT init value
-	* Example: set LUT 0 at position (13, 250) to the value 0x8000000000000001
+	* Example: set LUT 0 at position (13, 250) to the value 0x8000000000000001:
 	bitman.exe -S 13 250 0 80000000 00000001 none.bin -F clbm_13_250-3.bin
