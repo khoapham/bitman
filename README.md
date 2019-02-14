@@ -1,4 +1,4 @@
-# bitman
+# This BitMan is a part of my PhD project at the University of Manchester
 
 Use "bitman -help" for documentation
 
