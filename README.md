@@ -35,10 +35,10 @@ How to use the bitscan/bitman:
 	* In the XC7Z010 (Zybo): the COL value is equal the X coordinator of its Switchbox minus 2 (X-2). The ROW value is the same as the Y coordinator.
 	* In the Zynq UltraScale+ family: resource columns are organized as the pattern L-s-R
 	(left resouce column - Switchbox - right resource column)
-		+ Let say the Switchbox has the X-Y coordinator
-		+ The COL value of the L column is the value of (X*3+1)
-		+ The COL value of the s column is the value of (X*3+2)
-		+ The COL value of the R column is the value of (X*3+3)
+		+ Let say the Switchbox has the X-Y coordinator and a is a constant get values from [0,1]
+		+ The COL value of the L column is the value of (X*3+a)
+		+ The COL value of the s column is the value of (X*3+a)
+		+ The COL value of the R column is the value of (X*3+a)
 * Notes for "Set value for LUT" function
 	* How to know the LUT position in a CLB
 		* They are enumerated from bottom to top:
