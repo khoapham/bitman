@@ -120,7 +120,7 @@ int RepRsc;
 int MergeRsc;
 int ReloRsc;
 int DupliRsc;
-int Readback;
+int Readback = 0;
 
 void ParseRepMergeRsc(char **argv, int i);
 void ParseReloRsc(char **argv, int i);
@@ -231,6 +231,8 @@ int WriteZUBitfileHeader(FILE *OutBitfilePtr);
 int WriteZU3EGBitfileHeader_1_Slot(FILE *OutBitfilePtr);
 int WriteZU3EGBitfileHeader_2_Slots(FILE *OutBitfilePtr);
 int WriteZU3EGBitfileHeader_3_Slots(FILE *OutBitfilePtr);
+int WriteZU9EGBitfileHeader_1_Slot(FILE *OutBitfilePtr);
+int WriteZU9EGBitfileHeader_2_Slots(FILE *OutBitfilePtr);
 int Write7SeriesPartialBitfileHeader(FILE *OutBitfilePtr);
 int WriteZyboPartialBitfileHeader(FILE *OutBitfilePtr);
 int WriteZedBoardPartialBitfileHeader(FILE *OutBitfilePtr);
